@@ -6,12 +6,16 @@ using namespace std;
 
 int calculate_months_loan_payment(double loan_amount, double yearly_interest_rate, double monthly_payment)
 {
-  int month = 0;
-  int balance = loan_amount;
-  int payment = monthly_payment;
-  int rate = yearly_interest_rate / 12;
-  int interest = 0;
-  int principal = 0;
+  double month = 0;
+  double balance = loan_amount;
+  double payment = monthly_payment;
+  double rate = yearly_interest_rate / 12;
+  double interest = 0;
+  double principal = 0;
+
+  cout.setf(ios::fixed);
+  cout.setf(ios::showpoint);
+  cout.precision(2);
 
   cout << endl;
   cout << "****************************************************\n"
@@ -26,17 +30,19 @@ int calculate_months_loan_payment(double loan_amount, double yearly_interest_rat
             << std::setw(10) << "Principal" << "\n";
   std::cout << "------------------------------------------------------------------------\n";
   std::cout << std::left << std::setw(8) << "0"
-            << std::setw(13) << "N/A"
+            << std::setw(13) << balance
             << std::setw(9) << "N/A"
             << std::setw(9) << "N/A"
             << std::setw(9) << "N/A"
             << std::setw(9) << "N/A" << "\n";
-  while (balance > 0)
+
+  while (balance > 0.0)
   {
     month++;
     interest = balance * rate * 0.01;
     principal = payment - interest;
-    balance -= max(0, principal);
+    balance -= principal;
+    balance = max(0.0, balance);
 
     std::cout << std::left << std::setw(8) << month
               << std::setw(13) << balance
@@ -48,6 +54,10 @@ int calculate_months_loan_payment(double loan_amount, double yearly_interest_rat
     if (principal <= 0)
     {
       cout << "Payment Invalid!" << endl;
+      return month;
+    }
+    if (balance <= 0.0)
+    {
       return month;
     }
   }
