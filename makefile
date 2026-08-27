@@ -14,8 +14,8 @@ a.out: $(OBJ)
 main.o: main.cpp $(DEPS)
 	$(CC) $(CFLAGS) -c main.cpp
 
-loan_payment.o: loan_payment.cpp $(DEPS)
-	$(CC) $(CFLAGS) -c loan_payment.cpp
+loan_payment.o: loan_payment.h $(DEPS)
+	$(CC) $(CFLAGS) -c loan_payment.h
 
 run: a.out
 	./a.out

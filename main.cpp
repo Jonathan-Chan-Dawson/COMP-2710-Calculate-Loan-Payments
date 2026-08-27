@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 #include "loan_payment.h"
 
 using namespace std;
@@ -15,7 +16,6 @@ int main()
 
 	// loan amounts
 	cout << "\nEnter Loan Amount: ";
-	cin >> loan_amount;
 	while (!(cin >> loan_amount) || loan_amount < 0)
 	{
 		cout << "(Invalid Loan amount): " << loan_amount << ", Try Again!";
@@ -26,7 +26,6 @@ int main()
 
 	// try the interest amounts
 	cout << "\nEnter Interest Amount: ";
-	cin >> yearly_interest_rate;
 	while (!(cin >> yearly_interest_rate) || yearly_interest_rate < 0)
 	{
 		cout << "(Invalid Interest Amount): " << yearly_interest_rate << ", Try Again!";
@@ -37,7 +36,6 @@ int main()
 
 	// lastly, month payment amounts
 	cout << "\nEnter Monthly Payment Amount: ";
-	cin >> monthly_payment;
 	while (!(cin >> monthly_payment) || monthly_payment < 0)
 	{
 		cout << "(Invalid Month Payment Amount): " << monthly_payment << ", Try Again!";
@@ -50,14 +48,5 @@ int main()
 			 << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << endl;
 
 	// Next Step: Add Here!! More Loan Payment Info #AuraFarm
-	int grade;
-	cin >> grade;
-	if (grade <= 100 && grade >= 90)
-		cout << "Grade = A";
-	if (grade <= 89 && grade >= 80)
-		cout << "Grade = B";
-	if (grade <= 79 && grade >= 0)
-		cout << "Grade = C";
-	return 0;
 	return calculate_months_loan_payment(loan_amount, yearly_interest_rate, monthly_payment);
 }
