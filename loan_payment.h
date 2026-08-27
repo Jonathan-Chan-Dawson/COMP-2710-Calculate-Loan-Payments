@@ -48,8 +48,8 @@ int calculate_months_loan_payment(double loan_amount, double yearly_interest_rat
     if (principal <= 0)
     {
       cout << "Payment Invalid!" << endl;
-      return 0;
+      return month;
     }
   }
-  return 0;
+  return month;
 }
