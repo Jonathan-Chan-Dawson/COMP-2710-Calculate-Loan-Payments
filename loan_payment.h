@@ -31,12 +31,12 @@ int calculate_months_loan_payment(double loan_amount, double yearly_interest_rat
             << std::setw(9) << "N/A"
             << std::setw(9) << "N/A"
             << std::setw(9) << "N/A" << "\n";
-  while (loan_amount > 0)
+  while (balance > 0)
   {
     month++;
     interest = balance * rate * 0.01;
     principal = payment - interest;
-    balance -= principal;
+    balance -= max(0, principal);
 
     std::cout << std::left << std::setw(8) << month
               << std::setw(13) << balance
