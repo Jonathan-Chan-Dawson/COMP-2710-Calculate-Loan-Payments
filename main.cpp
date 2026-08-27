@@ -1,13 +1,12 @@
 #include <iostream>
 #include <string>
-#include <loan_payment.cpp>
+#include "loan_payment.h"
 
 using namespace std;
 
 int main()
 {
 
-	int i = 1;
 	double loan_amount, yearly_interest_rate, monthly_payment;
 
 	cout.setf(ios::fixed);
@@ -59,6 +58,6 @@ int main()
 		cout << "Grade = B";
 	if (grade <= 79 && grade >= 0)
 		cout << "Grade = C";
-	return;
+	return 0;
 	return calculate_months_loan_payment(loan_amount, yearly_interest_rate, monthly_payment);
 }

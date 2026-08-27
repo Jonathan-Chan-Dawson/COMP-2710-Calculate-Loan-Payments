@@ -6,10 +6,10 @@ CFLAGS = -std=c++11 -Wall
 DEPS = loan_payment.h
 OBJ = main.o loan_payment.o
 
-all: loan_payment
+all: a.out
 
-loan_payment: $(OBJ)
-	$(CC) $(CFLAGS) -o loan_payment $(OBJ)
+a.out: $(OBJ)
+	$(CC) $(CFLAGS) -o a.out $(OBJ)
 
 main.o: main.cpp $(DEPS)
 	$(CC) $(CFLAGS) -c main.cpp
@@ -17,5 +17,8 @@ main.o: main.cpp $(DEPS)
 loan_payment.o: loan_payment.cpp $(DEPS)
 	$(CC) $(CFLAGS) -c loan_payment.cpp
 
+run: a.out
+	./a.out
+
 clean:
-	rm -f *.o loan_payment
+	rm -f *.o a.out loan_payment
