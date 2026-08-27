@@ -51,7 +51,7 @@ int calculate_months_loan_payment(double loan_amount, double yearly_interest_rat
               << std::setw(9) << interest
               << std::setw(9) << principal << "\n";
 
-    if (principal <= 0)
+    if (principal <= 0.0)
     {
       cout << "Payment Invalid!" << endl;
       return month;

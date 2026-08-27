@@ -44,9 +44,13 @@ int main()
 		cout << "\nEnter Month Payment Amount: ";
 	}
 
-	cout << "\n"
+	cout << "Inputted: \n"
 			 << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << endl;
 
 	// Next Step: Add Here!! More Loan Payment Info #AuraFarm
-	return calculate_months_loan_payment(loan_amount, yearly_interest_rate, monthly_payment);
+	int monthsToPayment = calculate_months_loan_payment(loan_amount, yearly_interest_rate, monthly_payment);
+
+	cout << "From Inputted: \n"
+			 << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << "\n"
+			 << "Months to Complete Payment = " << monthsToPayment << endl;
 }
