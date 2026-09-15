@@ -7,7 +7,7 @@ DEPS = loan_payment.h
 OBJ = main.o loan_payment.o
 
 all: a.out
-
+ 
 a.out: $(OBJ)
 	$(CC) $(CFLAGS) -o a.out $(OBJ)
 

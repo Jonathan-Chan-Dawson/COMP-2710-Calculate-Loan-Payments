@@ -14,13 +14,14 @@ int main()
 	cout.setf(ios::showpoint);
 	cout.precision(2);
 
+	// for inputs: must be greater than 0, must have an input value
 	// loan amounts
 	cout << "\nEnter Loan Amount: ";
 	while (!(cin >> loan_amount) || loan_amount < 0)
 	{
 		cout << "(Invalid Loan amount): " << loan_amount << ", Try Again!";
 		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input from the buffer
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
 		cout << "\nEnter Loan Amount: ";
 	}
 
@@ -30,7 +31,7 @@ int main()
 	{
 		cout << "(Invalid Interest Amount): " << yearly_interest_rate << ", Try Again!";
 		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input from the buffer
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
 		cout << "\nEnter Interest Amount: ";
 	}
 
@@ -40,14 +41,14 @@ int main()
 	{
 		cout << "(Invalid Month Payment Amount): " << monthly_payment << ", Try Again!";
 		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input from the buffer
+		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
 		cout << "\nEnter Month Payment Amount: ";
 	}
 
 	cout << "Inputted: \n"
 			 << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << endl;
 
-	// Next Step: Add Here!! More Loan Payment Info #AuraFarm
+	// Next Step: More Loan Payment Info #AuraFarm
 	int monthsToPayment = calculate_months_loan_payment(loan_amount, yearly_interest_rate, monthly_payment);
 
 	cout << "From Inputted: \n"

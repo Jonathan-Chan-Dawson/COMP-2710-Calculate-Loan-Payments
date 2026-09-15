@@ -28,7 +28,7 @@ int calculate_months_loan_payment(double loan_amount, double yearly_interest_rat
             << std::setw(10) << "Rate"
             << std::setw(10) << "Interest"
             << std::setw(10) << "Principal" << "\n";
-  std::cout << "------------------------------------------------------------------------\n";
+  std::cout << "---------------------------------------------------------\n";
   std::cout << std::left << std::setw(8) << "0"
             << std::setw(13) << balance
             << std::setw(9) << "N/A"
