@@ -10,6 +10,7 @@ int main()
 
 	double loan_amount, yearly_interest_rate, monthly_payment;
 
+	// keep decimal a precision of 2 points
 	cout.setf(ios::fixed);
 	cout.setf(ios::showpoint);
 	cout.precision(2);
