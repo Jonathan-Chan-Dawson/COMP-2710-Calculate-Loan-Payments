@@ -26,13 +26,13 @@ int main()
 	}
 
 	// try the interest amounts
-	cout << "\nEnter Interest Amount: ";
+	cout << "\nEnter Interest Amount (%): ";
 	while (!(cin >> yearly_interest_rate) || yearly_interest_rate < 0)
 	{
 		cout << "(Invalid Interest Amount): " << yearly_interest_rate << ", Try Again!";
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
-		cout << "\nEnter Interest Amount: ";
+		cout << "\nEnter Interest Amount (%): ";
 	}
 
 	// lastly, month payment amounts
