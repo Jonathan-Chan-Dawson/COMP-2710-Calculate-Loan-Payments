@@ -7,7 +7,6 @@ using namespace std;
 
 int main()
 {
-
 	double loan_amount, yearly_interest_rate, monthly_payment;
 
 	// keep decimal a precision of 2 points
@@ -38,14 +37,28 @@ int main()
 
 	// lastly, month payment amounts
 	cout << "\nEnter Monthly Payment Amount: ";
-	while (!(cin >> monthly_payment) || monthly_payment < 0)
+
+	// this tests if the principal less than 0 from monthly payments
+	// probably not needed
+	int interest = loan_amount * (yearly_interest_rate / 12) * 0.01;
+	int principal = monthly_payment - interest;
+
+	while (!(cin >> monthly_payment) || monthly_payment < 0 || principal <= 0) // probably redundant
 	{
-		cout << "(Invalid Month Payment Amount): " << monthly_payment << ", Try Again!";
+		interest = loan_amount * (yearly_interest_rate / 12) * 0.01;
+		principal = monthly_payment - interest;
+
+		if (monthly_payment < 0)
+			cout << "(Invalid Month Payment Amount): " << monthly_payment << ", Try Again! \n";
+		else if (principal <= 0)
+			cout << "(You Didn't Pay Enough Money For Your Extended Car Warranty (Loan)!): " << monthly_payment << ", Try Again! \n";
+		else
+			break;
+
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
-		cout << "\nEnter Month Payment Amount: ";
+		cout << "\nEnter Monthly Payment Amount: ";
 	}
-
 	cout << "Inputted: \n"
 			 << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << endl;
 

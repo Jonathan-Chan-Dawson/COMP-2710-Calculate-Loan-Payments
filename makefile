@@ -1,24 +1,23 @@
 # COMP 2710 - Loan Payment Assignment Makefile
 
 CC = g++
-CFLAGS = -std=c++11 -Wall
 
-DEPS = loan_payment.h
 OBJ = main.o loan_payment.o
+DEPS = loan_payment.h
 
 all: a.out
  
 a.out: $(OBJ)
-	$(CC) $(CFLAGS) -o a.out $(OBJ)
+	$(CC) -o a.out $(OBJ)
 
 main.o: main.cpp $(DEPS)
-	$(CC) $(CFLAGS) -c main.cpp
+	$(CC) -c main.cpp
 
-loan_payment.o: loan_payment.h $(DEPS)
-	$(CC) $(CFLAGS) -c loan_payment.h
+loan_payment.o: loan_payment.cpp $(DEPS)
+	$(CC) -c loan_payment.cpp
 
 run: a.out
 	./a.out
 
 clean:
-	rm -f *.o a.out loan_payment
+	rm -f *.o a.out 

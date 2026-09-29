@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include "loan_payment.h"
 
 using namespace std;
 
