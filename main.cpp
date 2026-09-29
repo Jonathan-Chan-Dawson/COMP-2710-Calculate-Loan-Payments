@@ -51,7 +51,7 @@ int main()
 		if (monthly_payment < 0)
 			cout << "(Invalid Month Payment Amount): " << monthly_payment << ", Try Again! \n";
 		else if (principal <= 0)
-			cout << "(You Didn't Pay Enough Money For Your Extended Car Warranty (Loan)!): " << monthly_payment << ", Try Again! \n";
+			cout << "(You Didn't Pay Enough Money For Your Loan!): " << monthly_payment << ", Try Again! \n";
 		else
 			break;
 
@@ -59,6 +59,7 @@ int main()
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
 		cout << "\nEnter Monthly Payment Amount: ";
 	}
+
 	cout << "Inputted: \n"
 			 << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << endl;
 
