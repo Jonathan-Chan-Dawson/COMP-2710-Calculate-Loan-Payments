@@ -19,7 +19,8 @@ int main()
 	cout << "\nEnter Loan Amount: ";
 	while (!(cin >> loan_amount) || loan_amount < 0)
 	{
-		cout << "(Invalid Loan amount): " << loan_amount << ", Try Again!";
+		cout << "(Invalid Loan amount): " << loan_amount << "!";
+		return 0;
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
 		cout << "\nEnter Loan Amount: ";
@@ -29,7 +30,8 @@ int main()
 	cout << "\nEnter Interest Amount (%): ";
 	while (!(cin >> yearly_interest_rate) || yearly_interest_rate < 0)
 	{
-		cout << "(Invalid Interest Amount): " << yearly_interest_rate << ", Try Again!";
+		cout << "(Invalid Interest Amount): " << yearly_interest_rate << "!";
+		return 0;
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
 		cout << "\nEnter Interest Amount (%): ";
@@ -49,11 +51,19 @@ int main()
 		principal = monthly_payment - interest;
 
 		if (monthly_payment < 0)
-			cout << "(Invalid Month Payment Amount): " << monthly_payment << ", Try Again! \n";
+		{
+			cout << "(Invalid Month Payment Amount): " << monthly_payment << "! \n";
+			return 0;
+		}
 		else if (principal <= 0)
-			cout << "(You Didn't Pay Enough Money For Your Loan!): " << monthly_payment << ", Try Again! \n";
+		{
+			cout << "(You Didn't Pay Enough Money For Your Loan!): " << monthly_payment << "! \n";
+			return 0;
+		}
 		else
+		{
 			break;
+		}
 
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
@@ -69,4 +79,6 @@ int main()
 	cout << "From Inputted: \n"
 			 << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << "\n"
 			 << "Months to Complete Payment = " << monthsToPayment << endl;
+
+	return 0;
 }
