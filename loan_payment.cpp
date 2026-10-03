@@ -5,9 +5,13 @@
 
 using namespace std;
 
-int calculate_months_loan_payment(double loan_amount, double yearly_interest_rate, double monthly_payment)
+return_months_and_payment calculate_months_loan_payment(double loan_amount, double yearly_interest_rate, double monthly_payment)
 {
+  // to return
   double month = 0;
+  double cumulative_interest = 0;
+
+  // variables
   double balance = loan_amount;
   double payment = monthly_payment;
   double rate = yearly_interest_rate / 12;
@@ -44,6 +48,7 @@ int calculate_months_loan_payment(double loan_amount, double yearly_interest_rat
     principal = payment - interest;
     balance -= principal;
     balance = max(0.0, balance);
+    cumulative_interest += interest;
 
     std::cout << std::left << std::setw(8) << month
               << std::setw(14) << balance
@@ -55,12 +60,12 @@ int calculate_months_loan_payment(double loan_amount, double yearly_interest_rat
     if (principal <= 0.0)
     {
       cout << "Payment Invalid!" << endl;
-      return month;
+      return {month, cumulative_interest};
     }
     if (balance <= 0.0)
     {
-      return month;
+      return {month, cumulative_interest};
     }
   }
-  return month;
+  return {month, cumulative_interest};
 }

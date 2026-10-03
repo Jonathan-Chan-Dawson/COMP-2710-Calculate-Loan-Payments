@@ -19,10 +19,10 @@ int main()
 	cout << "\nEnter Loan Amount: ";
 	while (!(cin >> loan_amount) || loan_amount < 0)
 	{
-		cout << "(Invalid Loan amount): " << loan_amount << "!";
-		return 0;
+		cout << "(Invalid Loan amount): " << loan_amount << "!\n";
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
+		return 0;
 		cout << "\nEnter Loan Amount: ";
 	}
 
@@ -30,10 +30,10 @@ int main()
 	cout << "\nEnter Interest Amount (%): ";
 	while (!(cin >> yearly_interest_rate) || yearly_interest_rate < 0)
 	{
-		cout << "(Invalid Interest Amount): " << yearly_interest_rate << "!";
-		return 0;
+		cout << "(Invalid Interest Rate): " << yearly_interest_rate << "!\n";
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
+		return 0;
 		cout << "\nEnter Interest Amount (%): ";
 	}
 
@@ -45,19 +45,20 @@ int main()
 	int interest = loan_amount * (yearly_interest_rate / 12) * 0.01;
 	int principal = monthly_payment - interest;
 
-	while (!(cin >> monthly_payment) || monthly_payment < 0 || principal <= 0) // probably redundant
+	while (true)
 	{
+		if (!(cin >> monthly_payment) || monthly_payment < 0)
+		{
+			cout << "(Invalid Monthly Payment): " << monthly_payment << "! \n";
+			return 0;
+		}
+
 		interest = loan_amount * (yearly_interest_rate / 12) * 0.01;
 		principal = monthly_payment - interest;
 
-		if (monthly_payment < 0)
+		if (principal <= 0)
 		{
-			cout << "(Invalid Month Payment Amount): " << monthly_payment << "! \n";
-			return 0;
-		}
-		else if (principal <= 0)
-		{
-			cout << "(You Didn't Pay Enough Money For Your Loan!): " << monthly_payment << "! \n";
+			cout << "(Insufficient Payment!): " << monthly_payment << "! \n";
 			return 0;
 		}
 		else
@@ -67,6 +68,7 @@ int main()
 
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); // This ignores the past input
+		return 0;
 		cout << "\nEnter Monthly Payment Amount: ";
 	}
 
@@ -74,11 +76,12 @@ int main()
 			 << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << endl;
 
 	// Next Step: More Loan Payment Info #AuraFarm
-	int monthsToPayment = calculate_months_loan_payment(loan_amount, yearly_interest_rate, monthly_payment);
+	return_months_and_payment monthsAndPayment = calculate_months_loan_payment(loan_amount, yearly_interest_rate, monthly_payment);
 
 	cout << "From Inputted: \n"
 			 << loan_amount << " " << yearly_interest_rate << " " << monthly_payment << "\n"
-			 << "Months to Complete Payment = " << monthsToPayment << endl;
+			 << endl;
+	monthsAndPayment.printResult();
 
 	return 0;
 }
